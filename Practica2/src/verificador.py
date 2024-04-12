@@ -21,8 +21,16 @@ def verifica_k_coloracion(g:Grafica, certificado:list):
     return True
 if __name__ == "__main__":
     k, n, edges = read_file(("./inputs/" + str(sys.argv[1])))
-    certificado = read_certificate(("./certificados/" + str(sys.argv[2])))    
+    certificado = read_certificate(("./certificados/" + str(sys.argv[2])))
+    color_max = 1
+    for color in certificado:
+        if color_max < color:
+            color_max = color
     g = Grafica(n, edges)
+    print(f"Numero de vertices: {n}")
+    print(f"Numero de aristas: {len(edges)}")
+    print(f"k: {k}")
+    print(f"Numero de colores usados: {color_max}")
     if verifica_k_coloracion(g, certificado):
         print("El certificado es una solucion al problema")
     else:

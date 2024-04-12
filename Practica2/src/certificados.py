@@ -4,7 +4,10 @@ import re
 from script_read import Grafica
 from script_read import read_file
 from script_coloracion import _2_coloracion
-try:     
+#En este archivo vamos a implementar, leemos la entrada: k,n,aristsas y construimso la grafica
+#A partir de ahi generamos un certificado aleatorio el cual vamos a verificar posteriormente
+#Tenemos que leer deentrada el archivo input y en donde lo vamos a guardar.
+try:
     k, n, edges = read_file(("./inputs/" + str(sys.argv[1])))
     numCertificado = re.findall(r'\d+', str(sys.argv[2]))
 
