@@ -1,7 +1,14 @@
-from script_read import Grafica, read_file
+from script_read import Grafica
 import random
 import sys
 def _2_coloracion(g:Grafica):
+    """
+    Funcion que resuelve el problema de 2 coloracion, devuelve la lista con la solucion o dice que no es coloreable
+    Args:
+    g: grafica que vamos a colorear
+    Returns:
+    Lista que representa la coloracion
+    """
     queue = [random.randint(1, g.n)]
     colors = [0] * (g.n + 1)
     while(queue.__len__() > 0):
@@ -15,9 +22,5 @@ def _2_coloracion(g:Grafica):
             elif colors[neighbor] != color:
                 print("Grafica no 2-colorable")
                 sys.exit()
-        
-    #print("Grafica 2 coloreable")
-    #for i in range(1, colors.__len__()):
-    #    print(f"Para v={i}, su color es:{colors[i]}")
     return colors[1:]
     

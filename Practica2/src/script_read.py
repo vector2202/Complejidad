@@ -1,3 +1,6 @@
+import sys
+
+
 class Grafica:
     """
     Clase la cual nos premite representar una grafica
@@ -21,37 +24,50 @@ class Grafica:
     def get_n(self)->int:
         return self.n
         
-def read_file():
+def read_file(path):
     """
     Funcion que nos permite leer de un archivo que contiene la entrada del
     problema de k-coloracion, la k, la n (numero de vertices) y las aristas
     de la grafica
+    Args:
+    paht: ruta del archivo a leer la entrada de la grafica y k
     Returns:
     k: el numero de colores maximo permitido para colorear la grafica
     n: el numero de vertices de la grafica
     edges: la lista de tuplas que representan las aristas de la grafica
     """
-    with open('./input1.txt', 'r') as f:
-        k = int(f.readline().strip())
-        n = int(f.readline().strip())        
-        linea = f.readline().strip()
-        # Extraer las tuplas de la línea
-        tuplas = linea.strip()[1:-1].split('), (')
-        # Convertir las tuplas a una lista de tuplas
-        edges = [tuple(map(int, t.split(','))) for t in tuplas]
-        print("Lista de tuplas:", edges)
-        return k, n, edges
-def read_certificate():
+    try:
+        with open(path, 'r+') as f:
+            k = int(f.readline().strip())
+            n = int(f.readline().strip())        
+            linea = f.readline().strip()
+            # Extraer las tuplas de la línea
+            tuplas = linea.strip()[1:-1].split('), (')
+            # Convertir las tuplas a una lista de tuplas
+            edges = [tuple(map(int, t.split(','))) for t in tuplas]
+            #print("Lista de tuplas:", edges)
+            return k, n, edges
+    except FileNotFoundError as e:
+        print("No existe ese input")
+        sys.exit()
+
+def read_certificate(path):
     """
     Funcion que nos permite leer un certificado
+    Args:
+    path: ruta del certificado
     Returns:
     certificado: lista que representa para el vertice i, l[i] el color
     asignado al vertice
     """
-    with open('./certificado1.txt', 'r') as f:
-        certificado = f.readline().strip()
-        certificado = certificado.strip('()').split(',')
-        certificado = [int(elemento) for elemento in certificado]
-        print("Certificado: ", certificado)
-        return certificado
+    try:
+        with open(path, 'r+') as f:
+            certificado = f.readline().strip()
+            certificado = certificado.strip('()').split(',')
+            certificado = [int(elemento) for elemento in certificado]
+            print("Certificado: ", certificado)
+            return certificado
+    except FileNotFoundError as e:
+        print("No se ha generado el certificado")
+        sys.exit()
 

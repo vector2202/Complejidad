@@ -11,8 +11,8 @@ class Grafica:
         return self.lista_adyacencias[v] if v <= self.n else []
 
     
-def read_file(path):
-    with open(path, 'r+') as f:
+def read_file():
+    with open('C:/Users/alexa/OneDrive/Desktop/practicasCumplejidad/Complejidad/Practica1/inputs/input4.txt', 'r') as f:
         k = int(f.readline().strip())
         n = int(f.readline().strip())        
         linea = f.readline().strip()

@@ -16,13 +16,13 @@ def verifica_k_coloracion(g:Grafica, certificado:list):
     """
     for i in range(1, g.get_n()):
         for vecino in g.get_neighbors(i):
-            if certificado[i] == certificado[vecino]:
+            if certificado[i - 1] == certificado[vecino - 1]:
                 return False
     return True
 if __name__ == "__main__":
-    k, n, edges = read_file()
-    certificado = read_certificate()
-    g = Grafica(n, edges)n
+    k, n, edges = read_file(("./inputs/" + str(sys.argv[1])))
+    certificado = read_certificate(("./certificados/" + str(sys.argv[2])))    
+    g = Grafica(n, edges)
     if verifica_k_coloracion(g, certificado):
         print("El certificado es una solucion al problema")
     else:
