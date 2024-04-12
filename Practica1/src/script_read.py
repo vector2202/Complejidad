@@ -12,7 +12,7 @@ class Grafica:
 
     
 def read_file():
-    with open('./inputs/input1.txt', 'r') as f:
+    with open('C:/Users/alexa/OneDrive/Desktop/practicasCumplejidad/Complejidad/Practica1/inputs/input4.txt', 'r') as f:
         k = int(f.readline().strip())
         n = int(f.readline().strip())        
         linea = f.readline().strip()
